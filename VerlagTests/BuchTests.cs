@@ -126,7 +126,7 @@ namespace VerlagTests
             // Arrange
             Buch b = new Buch("autor", "titel", 1);
             string isbnOhnePruefziffer = "978-3-88661-189";
-            string isbnMitPruefziffer = "978-3-88661-189-8";
+            long isbnMitPruefziffer = 9783886611898;
 
             // Act 
             b.ISBN = isbnOhnePruefziffer;
@@ -134,6 +134,21 @@ namespace VerlagTests
             // Assert
             Assert.AreEqual(isbnMitPruefziffer, b.ISBN);
 
+        }
+
+		[TestMethod]
+		public void ISBN_ZuIsnb13()
+		{
+			// Arrange
+			Buch b = new Buch("autor", "titel", 1);
+			string isbn = "978-3-88661-189";
+			long isbn13 = 9783886611898;
+
+			// Act
+			b.ISBN = isbn;
+
+			// Assert
+			Assert.AreEqual(b.ISBN, isbn13);
         }
     }
 }

@@ -26,7 +26,13 @@ namespace Verlag
         public int Auflage
         {
             get { return auflage; }
-            set { auflage = value; }
+            set
+            {
+                auflage = value; if (value < 1)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
         }
         public string ISBN
         {
