@@ -11,11 +11,13 @@ namespace Verlag
         private string autor;
         private string titel;
         private int auflage;
+        private string iSBN;
 
         public string Autor
         {
             get { return autor; }
             set { autor = value; }
+      
         }
         public string Titel
         {
@@ -25,14 +27,54 @@ namespace Verlag
         public int Auflage
         {
             get { return auflage; }
-            set { auflage = value; }
+            set
+            {
+                if (value > 0)
+                {
+                    auflage = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Auflage darf nicht kleiner als 1 sein.");
+                }
+            }
         }
+        public string ISBN
+        {
+            get { return iSBN; }
+            set { iSBN = value; }
+        }
+
 
         public Buch(string autor, string titel, int auflage = 1)
         {
-            this.autor = autor;
+            switch (autor)
+            {
+                case "#": throw new ArgumentNullException("Unpassender Name");
+                    break;
+                case "$": throw new ArgumentNullException("Unpassender Name");
+                    break;
+                case "": throw new ArgumentNullException("Unpassender Name");
+                    break;
+                case "%": throw new ArgumentNullException("Unpassender Name");
+                    break;
+                case ";": throw new ArgumentNullException("Unpassender Name");
+                    break;
+                case null: throw new ArgumentNullException("Unpassender Name");
+                    break;
+
+            }
             this.titel = titel;
             this.auflage = auflage;
         }
+
+        public Buch(string iSBN) : this("Unbekannt", "Unbekannt")
+        { 
+            this.iSBN= iSBN;
+        
+        }
+
+      
+
     }
 }
