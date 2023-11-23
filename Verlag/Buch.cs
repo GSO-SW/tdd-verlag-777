@@ -12,6 +12,9 @@ namespace Verlag
         private string titel;
         private int auflage;
         private string isbn;
+        private string isbn13;
+        private string isbn10;
+        List<string> verboteneZeichen = new List<string> { "#", ";", "§", "%", "" };
 
         public string Autor
         {
@@ -30,7 +33,7 @@ namespace Verlag
             {
                 auflage = value; if (value < 1)
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Auflage zu klein");
                 }
             }
         }
@@ -47,7 +50,7 @@ namespace Verlag
             this.auflage = auflage;
             if(auflage < 1)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Auflage zu klein");
             }
         }
     }
