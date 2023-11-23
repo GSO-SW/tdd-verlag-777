@@ -68,9 +68,9 @@ namespace Verlag
             this.auflage = auflage;
         }
 
-        public Buch(string iSBN) : this("Unbekannt", "Unbekannt")
+        public Buch(string iSBN) : this( autor, titel, auflage)
         { 
-            this.iSBN= iSBN;
+            this.iSBN = iSBN;
         
         }
 
